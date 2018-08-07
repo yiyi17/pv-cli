@@ -1,0 +1,35 @@
+{
+  "name": "pv-cli",
+  "version": "0.0.3",
+  "description": "this is a vue project cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "pv-cli": "./bin/index.js",
+    "pv": "./bin/index.js"
+  },
+  "author": "https://github.com/yiyibao",
+  "license": "MIT",
+  "keywords": [
+    "vue cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/yiyibao/vue-simple-project/issues"
+  },
+  "homepage": "https://github.com/yiyibao/vue-simple-project#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "child_process": "^1.0.2",
+    "commander": "^2.15.1",
+    "download-git-repo": "^1.0.2",
+    "fs": "^0.0.1-security",
+    "handlebars": "^4.0.11",
+    "inquirer": "^6.0.0",
+    "log-symbols": "^2.2.0",
+    "ora": "^2.1.0",
+    "shelljs": "^0.8.2"
+  },
+  "devDependencies": {}
+}
