@@ -2,6 +2,7 @@
 import _ from 'loadsh'
 import axios from 'axios'
 import ElementUI from 'element-ui'
+import '../../node_modules/element-ui/lib/theme-chalk/index.css';
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'

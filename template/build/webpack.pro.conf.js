@@ -12,7 +12,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 module.exports = merge(baseWebpackConfig, {
   mode: 'production',
   output: {
-    publicPath: './'
+    publicPath: '/'
   },
 	optimization: {
 		minimizer: [
@@ -69,8 +69,8 @@ module.exports = merge(baseWebpackConfig, {
 			chunksSortMode: 'dependency' // 允许控制chunk的排序在插入到HTML之前
 		  }),
 		new MiniCssExtractPlugin({
-			filename: 'static/css/[name][hash].css',
-			chunkFilename: 'static/css/[name][hash].css',
+			filename: 'static/css/[name]_[hash].css',
+			chunkFilename: 'static/css/vendor_[hash].css',
 			sourceMap: true
 		}),
 		 // 复制静态文件
