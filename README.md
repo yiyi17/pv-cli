@@ -10,6 +10,8 @@
 
 - `npm i pv-cli -g`
 
+ps:如果报错，node-sass不能正常安装，尝试`npm install pv-cli --unsafe-perm=true --allow-root -g`
+
 ## 快速开始
 
 pv与pv-cli都是初始化项目的命令`pv init <project-name> <type> `
