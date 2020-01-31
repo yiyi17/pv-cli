@@ -1,0 +1,12 @@
+{
+  // https://babeljs.io/docs/en/babel-plugin-transform-runtime#options
+  "plugins": [
+      "@babel/plugin-transform-runtime"
+  ],
+  // https://babeljs.io/docs/en/babel-plugin-transform-runtime#options
+  "presets": [
+      [
+          "@babel/preset-env"
+      ]
+  ]
+}

@@ -1,13 +1,14 @@
 {
-  "author": {
-    "name": "https://github.com/yiyibao"
-  },
-  "bin": {
-    "pv-cli": "bin/index",
-    "pv": "bin/index"
-  },
-  "bugs": {
-    "url": "https://github.com/yiyibao/vue-simple-project/issues"
+  "name": "vue-pro",
+  "description": "A Vue.js project",
+  "author": "地铁程序员",
+  "private": true,
+  "scripts": {
+    "dev": " node build/dev.js",
+    "build": "webpack -p  --progress --config build/webpack.pro.conf.js",
+    "dll": "webpack --config build/webpack.dll.config.js",
+    "dele": "rm -rf node_modules",
+    "lint": "eslint --fix --ext .js,.vue src test/unit"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -16,21 +17,11 @@
     "pv-err-watch": "^0.0.3",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1",
-    "chalk": "^2.4.1",
-    "child_process": "^1.0.2",
-    "commander": "^2.15.1",
-    "download-git-repo": "^1.0.2",
-    "fs": "^0.0.1-security",
-    "handlebars": "^4.0.11",
-    "inquirer": "^6.0.0",
-    "log-symbols": "^2.2.0",
-    "ora": "^2.1.0",
-    "shelljs": "^0.8.2",
-    "path": "^0.12.7"
+    "vuex": "^3.0.1"
   },
-  "deprecated": false,
-  "description": "this is a vue project cli",
+  "engines": {
+    "node": ">=6"
+  },
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.7.6",
@@ -76,16 +67,5 @@
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
     "webpack-merge": "^4.1.3"
-  },
-  "homepage": "https://yiyibao.github.io/pv-cli/",
-  "keywords": [
-    "vue cli"
-  ],
-  "license": "MIT",
-  "main": "index.js",
-  "name": "pv-cli",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "version": "0.0.10"
+  }
 }

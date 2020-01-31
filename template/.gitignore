@@ -1,0 +1,13 @@
+.DS_Store
+dist/electron/*
+jist/web/*
+!build/icons
+node_modules/
+npm-debug.log
+npm-debug.log.*
+thumbs.db
+!.gitkeep
+package-lock.json
+.vscodes
+.vscode/
+dist/
