@@ -21,7 +21,8 @@
     "log-symbols": "^2.2.0",
     "ora": "^2.1.0",
     "path": "^0.12.7",
-    "shelljs": "^0.8.2"
+    "shelljs": "^0.8.2",
+    "vue": "^2.6.11"
   },
   "deprecated": false,
   "description": "this is a vue project cli",
@@ -34,7 +35,6 @@
   "main": "index.js",
   "name": "pv-cli",
   "scripts": {
-    "postinstall": "node bin/mv.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "version": "0.0.16"
