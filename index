@@ -1,0 +1,146 @@
+#! /usr/bin/env node
+
+const program = require('commander')
+const inquirer = require('inquirer')
+const fs = require('fs')
+const download = require('download-git-repo')
+const Handlebars = require('handlebars')
+const ora = require('ora')
+const chalk = require('chalk')
+const symbols = require('log-symbols')
+const packageFile = require('./package.json')
+const shelljs = require('shelljs/global');
+const getUserName = require('./lib/username')
+const downLoadUrl = require('./lib/url')
+const execCmd = require('./lib/execCmd')
+const path = require('path')
+const sigleVue = require('./lib/singleVue')
+//  单文件编写预览服务
+// 1、读取文件内容 写入到APP.vue,添加到默认脚手架中，展示UI
+// 2、TODO:路由编写，替换router，如果传router的话
+program.command('run')
+    .description('run a project')
+    .action(async (name,router) => {
+        // console.log(typeof router);
+        if(typeof router === 'object'){
+            sigleVue(name)
+        }
+    })
+
+
+
+program.version(packageFile.version)
+
+program
+    .command('info')
+    .description('supported <type>')
+    .action(() => {
+        const typeInfo = `
+=======================================================================
+        type:
+
+        simple
+        webpack4
+        module
+        Integrate
+        dev
+=======================================================================
+`
+        console.log(chalk.blue(typeInfo))
+    })
+
+
+program
+    .command('init <name> <type>')
+    .description('build project')
+    .action((name='my-project', type='simple') => {
+        if (!fs.existsSync(name)) {
+            inquirer.prompt([{
+                    type: 'input',
+                    boolean: 'confirm',
+                    name: 'author',
+                    default: getUserName() || '',
+                    message: '请输入作者名称'
+
+                },
+                {
+                    type: 'input',
+                    boolean: 'confirm',
+                    name: 'description',
+                    default: 'A Vue.js project',
+                    message: '请输入描述信息'
+                },
+                {
+                    type: 'list',
+                    boolean: 'confirm',
+                    name: 'build',
+                    message: '请选择安装依赖方式',
+                    choices: [{
+                        name: 'npm install',
+                        value: 1,
+                        short: 'npm install'
+                    }, {
+                        name: 'cnpm install',
+                        value: 2,
+                        short: 'cnpm install'
+                    },{
+                        name: '我自己安装',
+                        value: 0,
+                        short: '我自己安装'
+                    }]
+                }
+            ]).then((answers) => {
+                const spinner = ora('正在下载模版...')
+                spinner.start()
+                download(downLoadUrl(type), name, { clone: true }, (err) => {
+                    if (err) {
+                        spinner.fail()
+                        console.log(symbols.error, chalk.red(err))
+                    } else {
+                        spinner.succeed()
+                        const fileName = `${name}/package.json`
+                        const meta = {
+                            name,
+                            description: answers.description,
+                            author: answers.author
+                        }
+                        if (fs.existsSync(fileName)) {
+                            const content = fs.readFileSync(fileName).toString()
+                            const result = Handlebars.compile(content)(meta)
+                            fs.writeFileSync(fileName, result)
+                        }
+                        const description = `
+=======================================================================
+        start:
+        ----------------------
+        cd ${name}
+        npm install
+        npm run dev
+        ----------------------
+=======================================================================
+`
+                        console.log(symbols.success, chalk.green('项目下载完成'))
+                        if (answers.build) {
+                            let cmd = 'npm install'
+                            if(answers.build === 2){
+                                cmd = 'cnpm install'
+                            }
+                            const tip = ora(`${cmd} ...`)
+                            tip.start()
+                            cd(`./${name}`)
+                            execCmd(cmd);
+                            tip.succeed()
+                            console.log(symbols.success, chalk.green('项目初始化完成'))
+                        } else if(type!=='module'&&type!=='Integrate') {
+                            console.log(chalk.yellow(description))
+                        }
+
+                    }
+                })
+            })
+        } else {
+            console.log(symbols.error, chalk.red('项目已存在'))
+        }
+    })
+
+program.parse(process.argv)
