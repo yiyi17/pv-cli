@@ -1,6 +1,6 @@
 # pv-cli
 
-- 官网`https://yiyibao.github.io/pv-cli/`
+- 官网`https://yiyi17.github.io/pv-cli/`
 
 ## 简介
 
@@ -32,7 +32,7 @@ type值:
 
 ## 交流 & 提问
 
-- 提问：https://github.com/yiyibao/vue-simple-project/issues
+- 提问：https://github.com/yiyi17/vue-simple-project/issues
 
 
 ## 关于作者
