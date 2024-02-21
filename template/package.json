@@ -11,7 +11,7 @@
     "lint": "eslint --fix --ext .js,.vue src test/unit"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.28.0",
     "element-ui": "^2.13.0",
     "loadsh": "0.0.4",
     "pv-err-watch": "^0.0.3",
