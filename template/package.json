@@ -14,7 +14,7 @@
     "axios": "^0.18.0",
     "element-ui": "^2.13.0",
     "loadsh": "0.0.4",
-    "pv-err-watch": "^0.0.3",
+    "pv-err-watch": "^0.0.9",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
