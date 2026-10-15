@@ -22,7 +22,7 @@
     "ora": "^2.1.0",
     "path": "^0.12.7",
     "shelljs": "^0.8.2",
-    "vue": "^2.6.11"
+    "vue": "^3.0.0"
   },
   "deprecated": false,
   "description": "this is a vue project cli",
